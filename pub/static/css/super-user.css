@@ -1,0 +1,4 @@
+.add>.active {
+    border-bottom: 2px solid #c0f03b;
+    transition: .2s ease-in-out;
+}

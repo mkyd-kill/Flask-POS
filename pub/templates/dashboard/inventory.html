@@ -1,0 +1,125 @@
+{% extends 'dashboard/base.html' %} {% block head %}
+<title>{{ title }} | Inventory</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+</script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/inventory.css') }}"> {% endblock %} {% block content %}
+
+<div class="edit-inventory">
+    <nav class="edit">
+        <ul class="add">
+            <li class="show-inventory active">
+                <span class="icon"><i class="fa-solid fa-warehouse"></i></span>
+                <span class="item">Inventory</span>
+            </li>
+            <li class="add-inventory">
+                <span class="icon"><i class="fa-solid fa-cart-plus"></i></span>
+                <span class="item">Add Stock</span>
+            </li>
+            <li class="update-inventory">
+                <span class="icon"><i class="fa-solid fa-wrench"></i></span>
+                <span class="item">Update Stock</span>
+            </li>
+        </ul>
+    </nav>
+    <div class="store">
+        <table>
+            <thead style="background: aqua;">
+                <tr>
+                    <th>Item Id</th>
+                    <th>Item Name</th>
+                    <th>Item Quantity</th>
+                    <th>Item Price per Qty</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>
+                        {{ product.id }}
+                    </td>
+                    <td>
+                        {{ product.name }}
+                    </td>
+                    <td>
+                        {{ product.stock }}
+                    </td>
+                    <td>
+                        {{ product.price }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    <div class="add-store disabled">
+        <form action="{{ url_for('dashboard.new_stock') }}" class="new-item" autocomplete="off">
+            <div class="item-input">
+                <label for="item-name" class="name">Item Name:</label>
+                <input type="text" class="itm-name" name="itm-name" required />
+            </div>
+            <div class="item-input">
+                <label for="item-quantity" class="name">Item Quantity:</label>
+                <input type="number" class="itm-qyt" name="itm-qyt" value="0" required />
+            </div>
+            <div class="item-input">
+                <label for="item-price" class="name">Price per Quantity (Unit):</label>
+                <input type="number" class="itm-price" name="itm-price" value="0" required />
+            </div>
+            <div class="item-input">
+                <label for="item-tax" class="name">Tax per Quantity (Unit):</label>
+                <input type="number" class="itm-tax" name="itm-tax" value="0" required />
+            </div>
+            <div class="item-input">
+                <label for="item-tax" class="name">Payment Status:</label>
+                <select id="status" name="status">
+                    <option value="delivered">Delivered</option>
+                    <option value="return">Return</option>
+                    <option value="inprogress">In Progress</option>
+                    <option value="pending">Pending</option>
+                  </select>
+            </div>
+            <button class="add-stock">
+                <span class="icon"><i class="fa-solid fa-plus"></i></span>
+                <span class="item">Add Item</span>
+            </button>
+        </form>
+    </div>
+    <div class="update-store"></div>
+</div>
+{% endblock %} {% block script %}
+<script type="text/javascript">
+    // changing navbar ul element color when clicked
+    $(document).ready(function() {
+
+        $('ul.add > li')
+            .click(function(e) {
+                $('ul.add > li')
+                    .removeClass('active');
+                $(this).addClass('active');
+            });
+    });
+    // click events
+    document.querySelector(".show-inventory").addEventListener("click", showInventory);
+    document.querySelector(".add-inventory").addEventListener("click", addInventory);
+    document.querySelector(".update-inventory").addEventListener("click", updateInventory);
+
+    // constants
+    let inventory = document.querySelector(".store");
+    let add = document.querySelector(".add-store");
+
+    function showInventory() {
+        inventory.classList.remove("disabled");
+        add.classList.add("disabled");
+    }
+
+    function addInventory() {
+        inventory.classList.add("disabled");
+        add.classList.remove("disabled");
+    }
+
+    function updateInventory() {
+        alert('clicked');
+    }
+</script>
+{% endblock %}

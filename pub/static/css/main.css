@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+* {
+    list-style: none;
+    text-decoration: none !important;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background: #f5f6fa;
+    height: 95vh !important;
+}
+
+.wrapper .sidebar {
+    background: rgb(5, 68, 104);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 225px;
+    height: 100vh;
+    padding: 20px 0;
+    transition: all 0.5s ease;
+}
+
+.wrapper .sidebar .profile {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.wrapper .sidebar .profile img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.wrapper .sidebar .profile h3 {
+    color: #ffffff;
+    margin: 10px 0 5px;
+}
+
+.wrapper .sidebar ul li a {
+    display: block;
+    padding: 13px 30px;
+    border-bottom: 1px solid #10558d;
+    color: rgb(241, 237, 237);
+    font-size: 16px;
+    position: relative;
+}
+
+.wrapper .sidebar ul li a .icon {
+    color: #dee4ec;
+    width: 30px;
+    display: inline-block;
+}
+
+.wrapper .sidebar ul li a:hover,
+.wrapper .sidebar ul li a.active {
+    color: #0c7db1;
+    background: white;
+    border-right: 2px solid rgb(5, 68, 104);
+}
+
+.wrapper .sidebar ul li a:hover .icon,
+.wrapper .sidebar ul li a.active .icon {
+    color: #0c7db1;
+}
+
+.wrapper .sidebar ul li a:hover:before,
+.wrapper .sidebar ul li a.active:before {
+    display: block;
+}
+
+.wrapper .section {
+    width: calc(100% - 225px);
+    margin-left: 225px;
+    transition: all 0.5s ease;
+}
+
+.wrapper .section .top_navbar {
+    background: rgb(7, 105, 185);
+    height: 50px;
+    display: grid;
+    width: 100% !important;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.wrapper .section .top_navbar .hamburger a {
+    font-size: 28px;
+    color: #f4fbff;
+}
+
+.wrapper .section .top_navbar .hamburger a:hover {
+    color: #a2ecff;
+}
+
+body.active .wrapper .sidebar {
+    left: -225px;
+}
+
+body.active .wrapper .section {
+    margin-left: 0;
+    width: 100%;
+}
+
+.main {
+    position: absolute;
+    width: calc(100% - 227px);
+    left: 227px;
+    height: 90vh;
+    background-color: #f5f5f5;
+    transition: .5s;
+    overflow-x: hidden !important;
+}
+
+body.active .main {
+    left: 0%;
+    width: 100%;
+    overflow-x: hidden !important;
+    height: 90vh;
+}
+
+.cardBox {
+    position: relative;
+    width: 100%;
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.cardBox .card {
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    border-radius: 13px;
+    border: 1.5px solid rgba(110, 104, 104, 0.404);
+}
+
+.cardBox .card .numbers {
+    position: relative;
+    font-size: 2em;
+    font-weight: 500;
+}
+
+.cardBox .card .cardName {
+    color: #999;
+}
+
+.cardBox .card .iconBox {
+    font-size: 2.5em;
+    color: #03a9fa;
+}
+
+.details {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 2fr 1fr;
+}
+
+.details .recentOrders {
+    position: relative;
+    min-height: 530px;
+    background: #fff;
+    padding: 20px;
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.cardHeader h2 {
+    font-weight: 600;
+}
+
+.btn {
+    position: relative;
+    padding: 5px 10px;
+    background: #03a9fa;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 7px;
+}
+
+.details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.details table thead td {
+    font-weight: 600;
+}
+
+.details .recentOrders table tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details .recentOrders table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.details .recentOrders table tbody tr:hover {
+    background: #03a9fa;
+    color: #fff;
+}
+
+.details .recentOrders table tr td {
+    padding: 9px 5px;
+}
+
+.details .recentOrders table thead tr td:last-child,
+.details .recentOrders table tbody tr td:last-child {
+    text-align: right;
+}
+
+.details .recentOrders table thead tr td:nth-child(2),
+.details .recentOrders table tbody tr td:nth-child(2) {
+    text-align: right;
+    padding-right: 25px;
+}
+
+.details .recentOrders table thead tr td:nth-child(3),
+.details .recentOrders table tbody tr td:nth-child(3) {
+    text-align: center;
+}
+
+.status {
+    position: relative;
+    padding: 2px 4px;
+    color: #fff;
+    background: #f00;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.delivered {
+    background: #8de02c;
+}
+
+.pending {
+    background: #f9ca3f;
+}
+
+.return {
+    background: #f00;
+}
+
+.inprogress {
+    background: #1795ce;
+}
+
+.details .recentCustomers {
+    position: relative;
+    min-height: 530px;
+    background: rgba(243, 232, 232, 0.979);
+    padding: 20px;
+    border-radius: 7px;
+}
+
+.details .recentCustomers table tr td h4 span {
+    font-size: 14px;
+    color: rgba(44, 42, 42, 0.911);
+}
+
+.details .recentCustomers table tr:hover,
+.details .recentCustomers table tr:hover td h4 span {
+    background: #03a9fa;
+    color: #fff;
+}
+
+.details .recentCustomers table tr td {
+    padding: 7px 10px;
+}
+
+.details .recentCustomers table tr td h4 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2em;
+}
+
+
+/* Mobile and Screen responsiveness */
+
+@media only screen and (max-width: 992px) {
+    .main {
+        width: 100%;
+        left: 225px;
+    }
+    .main.active {
+        width: calc(100% - 300px);
+        left: 300px;
+    }
+    .cardBox {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .main {
+        width: 100%;
+        left: 225px;
+    }
+    .details {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .cardHeader h2 {
+        font-weight: 600;
+        font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .main {
+        width: 100%;
+        left: 225px;
+    }
+    .cardBox {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .details .recentOrders {
+        overflow-x: auto;
+    }
+    .details .recentOrders table {
+        width: 600px;
+    }
+}

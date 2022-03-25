@@ -1,0 +1,36 @@
+{% extends 'dashboard/base.html' %} {% block head %}
+<title>{{ title}} | Sell</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/inventory.css') }}"> {% endblock %} {% block content %}
+<div class="add-store">
+    <form action="{{ url_for('dashboard.new_stock') }}" class="new-item" autocomplete="off">
+        <div class="item-input">
+            <label for="item-name" class="name">Item Name:</label>
+            <input type="text" class="itm-name" name="itm-name" required />
+        </div>
+        <div class="item-input">
+            <label for="item-quantity" class="name">Item Quantity:</label>
+            <input type="number" class="itm-qyt" name="itm-qyt" value="0" required />
+        </div>
+        <div class="item-input">
+            <label for="item-price" class="name">Price:</label>
+            <input type="number" class="itm-price" name="itm-price" value="0" required />
+        </div>
+        <div class="item-input">
+            <label for="item-discount" class="name">Discount:</label>
+            <input type="number" class="itm-discount" name="itm-discount" value="0" required />
+        </div>
+        <div class="item-input">
+            <label for="item-tax" class="name">Payment Method:</label>
+            <select id="status" name="status">
+                <option value="cash">Cash</option>
+                <option value="money">M-Pesa (Send Money)</option>
+                <option value="till" class="till">M-Pesa (Till No.)</option>
+              </select>
+
+        </div>
+        <button class="add-stock">
+            <span class="item">Sell Item</span>
+        </button>
+    </form>
+</div>
+{% endblock %}

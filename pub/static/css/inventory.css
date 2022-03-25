@@ -1,0 +1,129 @@
+.edit-inventory {
+    display: grid;
+}
+
+.edit {
+    display: flex;
+    background: #333;
+    width: 100%;
+    padding: 15px;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+}
+
+.add {
+    justify-content: center;
+    align-items: center;
+}
+
+.edit li {
+    display: inline;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.add>.active {
+    color: #0c7db1;
+    font-weight: bold;
+    border-bottom: 1px solid #0c7db1;
+    transition: .2s ease-in-out;
+}
+
+.add>.active:hover {
+    color: #fff;
+}
+
+.edit li:hover {
+    color: #0c7db1;
+}
+
+.edit .icon .fa-solid {
+    font-size: 20px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 15px;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.disabled {
+    display: none;
+}
+
+.add-store {
+    margin: 15px;
+    height: 80vh;
+    background: rgb(238, 226, 226);
+}
+
+.new-item {
+    padding: 5px;
+}
+
+.item-input {
+    padding: 12px;
+    display: grid;
+}
+
+.item-input label {
+    font-size: large;
+    font-weight: 600;
+    margin: 2px;
+}
+
+.item-input input,
+.item-input select {
+    padding: 9px;
+    width: auto;
+    border: 1px solid #0c7db1;
+    border-radius: 7px;
+}
+
+.item-input input:hover {
+    border: 1px solid #fff;
+    transition: all ease-in-out;
+}
+
+.add-stock {
+    padding: 10px;
+    margin-top: 5px;
+    margin-left: 9px;
+    background: #0c7db1;
+    color: #fff;
+    border: 1px solid #333;
+    cursor: pointer;
+}
+
+.add-stock .item {
+    font-size: large;
+    font-weight: 300;
+}
+
+.add-stock .icon .fa-solid {
+    font-size: 20px;
+}
+
+.add-stock:hover {
+    background: #fff;
+    color: #185b7a;
+    border: transparent;
+    transition: .2s ease-in-out;
+}
+
+.inactive {
+    display: none;
+}

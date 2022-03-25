@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.0/css/all.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="{{ url_for('static', filename='scripts/app.js') }}"></script>{% block head %} {% endblock %}
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="section">
+            <div class="top_navbar">
+                <div class="hamburger">
+                    <a href="#">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="sidebar">
+            <div class="profile">
+                <img src="https://1.bp.blogspot.com/-vhmWFWO2r8U/YLjr2A57toI/AAAAAAAACO4/0GBonlEZPmAiQW4uvkCTm5LvlJVd_-l_wCNcBGAsYHQ/s16000/team-1-2.jpg" alt="profile_picture">
+                <h3>Happy Club</h3>
+            </div>
+            <ul>
+                <li>
+                    <a href="{{ url_for('dashboard.main') }}">
+                        <span class="icon"><i class="fas fa-desktop"></i></span>
+                        <span class="item">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('dashboard.inventory') }}">
+                        <span class="icon"><i class="fas fa-solid fa-store"></i></span>
+                        <span class="item">Store</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('dashboard.sell') }}">
+                        <span class="icon"><i class="fas fa-solid fa-shop"></i></span>
+                        <span class="item">Sell</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('dashboard.report') }}">
+                        <span class="icon"><i class="fas fa-chart-line"></i></span>
+                        <span class="item">Reports</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('dashboard.settings') }}">
+                        <span class="icon"><i class="fas fa-cog"></i></span>
+                        <span class="item">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main">
+        {% with messages = get_flashed_messages(with_categories=true) %} {% if messages %} {% for category, message in messages %} {% if category == 'error' %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% elif category == 'info' %}
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% elif category == 'warning' %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% else %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endif %} {% endfor %} {% endif %} {% endwith %} {% block content %} {% endblock %}
+    </div>
+
+    <script type="text/javascript">
+        var hamburger = document.querySelector(".hamburger");
+        hamburger.addEventListener("click", function() {
+            document.querySelector("body").classList.toggle("active");
+        })
+    </script>
+    {% block script %} {% endblock %}
+</body>
+
+</html>

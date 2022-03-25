@@ -1,0 +1,98 @@
+{% extends 'dashboard/base.html' %} {% block head %}
+<title>{{ title }} | Dashboard</title>
+{% endblock %} {% block content %}
+<div class="cardBox">
+    <div class="card">
+        <div>
+            <div class="numbers">Ksh. 10</div>
+            <div class="cardName">Today's Billed In</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa-solid fa-sack-dollar"></i>
+        </div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="numbers">8</div>
+            <div class="cardName">Check-Out Goods</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa-solid fa-cookie-bite"></i>
+        </div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="numbers">Ksh. 1</div>
+            <div class="cardName">Discount Given</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa-solid fa-sack-dollar"></i>
+        </div>
+    </div>
+    <div class="card">
+        <div>
+            <div class="numbers">10</div>
+            <div class="cardName">In-Stock Items</div>
+        </div>
+        <div class="iconBox">
+            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+        </div>
+    </div>
+</div>
+<div class="details">
+    <div class="recentOrders">
+        <div class="cardHeader">
+            <h2>Recent Updates (Check-Ins)</h2>
+            <a href="{{ url_for('dashboard.checked_in') }}" class="btn">View All</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Price (Ksh.)</td>
+                    <td>Quantity</td>
+                    <td>Status</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% if row
+                < 9 %} {% for product in products %} <tr>
+                    <td>
+                        {{ product.name }}
+                    </td>
+                    <td>
+                        {{ product.price }}
+                    </td>
+                    <td>
+                        {{ product.stock }}
+                    </td>
+                    <td>
+                        {% if product.status == 'delivered' %}
+                        <span class="status delivered">Delivered</span> {% elif product.status == 'pending' %}
+                        <span class="status pending">Pending</span> {% elif product.status == 'return' %}
+                        <span class="status return">Return</span> {% else %}
+                        <span class="status inprogress">In Progress</span> {% endif %}
+                    </td>
+                    </tr>
+                    {% endfor %} {% endif %}
+            </tbody>
+        </table>
+    </div>
+    <div class="recentCustomers">
+        <div class="cardHeader">
+            <h2>Stock Levels</h2>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <td>Stock</td>
+                    <td>Level</td>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

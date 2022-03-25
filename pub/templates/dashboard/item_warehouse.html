@@ -1,0 +1,32 @@
+{% extends 'dashboard/base.html' %} {% block head %}
+<title>{{ title}} | Warehouse</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/inventory.css') }}"> {% endblock %} {% block content %}
+<table>
+    <thead style="background: aqua;">
+        <tr>
+            <th>Item Id</th>
+            <th>Item Name</th>
+            <th>Item Quantity</th>
+            <th>Item Price per Qty</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>
+                {{ product.id }}
+            </td>
+            <td>
+                {{ product.name }}
+            </td>
+            <td>
+                {{ product.stock }}
+            </td>
+            <td>
+                {{ product.price }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

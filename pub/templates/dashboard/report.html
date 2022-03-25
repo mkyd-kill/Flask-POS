@@ -1,0 +1,48 @@
+{% extends 'dashboard/base.html' %} {% block head %}
+<title>{{ title}} | Report</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/report.css') }}"> {% endblock %} {% block content %}
+<button class="download-report">
+    <span class="icon"><i class="fa-solid fa-download"></i></span>
+    <a href="{{ url_for('dashboard.generate_report') }}" download="">Download Report</a>
+</button>
+<div class="show-report">
+    <table>
+        <thead>
+            <tr class="header">
+                <th>Transaction Id</th>
+                <th>Product Name</th>
+                <th>Product Qty</th>
+                <th>Price</th>
+                <th>Product Id</th>
+                <th>Created On</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>
+                    {{ transaction.id }}
+                </td>
+                {% for transaction_product in transaction.transaction_products %}
+                <td>
+                    {{ transaction_product.product.name }}
+                </td>
+                <td>
+                    {{ transaction_product.product.stock }}
+                </td>
+                <td>
+                    {{ transaction_product.product.price }}
+                </td>
+                <td>
+                    {{ transaction_product.product.id }}
+                </td>
+                {% endfor %}
+                <td>
+                    {{ transaction.create_on }}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

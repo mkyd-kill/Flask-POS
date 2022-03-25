@@ -1,0 +1,44 @@
+.download-report {
+    margin: 5px;
+    padding: 8px;
+    border: 1px solid grey;
+    border-radius: 6px;
+    align-items: right;
+    justify-content: right;
+}
+
+.download-report a {
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 15px;
+    align-items: right;
+    justify-content: right;
+    color: darkblue;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 15px;
+}
+
+table .header {
+    background: aqua;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.fa-solid {
+    font-size: 18px;
+    margin: 2px;
+}
