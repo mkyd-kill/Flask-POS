@@ -2,7 +2,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path, environ
 from flask_migrate import Migrate
-from flask_script import Manager
 from flask_moment import Moment
 from flask_sslify import SSLify
 from .validators import secretKey
@@ -27,10 +26,8 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
     UPLOAD_FOLDER = 'static/images/icons'
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-    manager = Manager()
     moment.init_app(app)
     migrate.init_app(app, db)
-    manager.add_command('db')
     db.init_app(app)
 
     @app.teardown_appcontext
